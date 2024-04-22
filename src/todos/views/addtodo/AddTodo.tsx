@@ -15,9 +15,9 @@ export default function AddTodo() {
     }
   });
 
-  async function maybeAddTodo() {
+  function maybeAddTodo() {
     if (todoTitle) {
-      await addTodoMutation.mutateAsync(todoTitle);
+      addTodoMutation.mutate(todoTitle);
       setTodoTitle('');
     }
   }

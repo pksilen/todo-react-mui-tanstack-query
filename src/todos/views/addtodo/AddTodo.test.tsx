@@ -1,13 +1,17 @@
 /* eslint-disable testing-library/no-unnecessary-act */
-import {act, render, screen} from '@testing-library/react';
+import { useMutation } from '@tanstack/react-query';
+import { act, render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import AddTodo from './AddTodo';
 
-const mockAddTodo = jest.fn();
+jest.mock('@tanstack/react-query');
 
-jest.mock('../../model/todosStore', () => () => ({
-  addTodo: mockAddTodo
-}));
+const TODO_TITLE = 'test todo';
+const mutationMock = { mutate: jest.fn() };
+
+beforeEach(() => {
+  (useMutation as jest.Mock).mockReturnValue(mutationMock);
+});
 
 describe('AddTodo', () => {
   it('renders input for todo title and button for adding todo', () => {
@@ -28,29 +32,31 @@ describe('AddTodo', () => {
     // GIVEN
     render(<AddTodo />);
     const todoTitleInput = screen.getByLabelText(/Add new todo/i);
+    act(() => user.type(todoTitleInput, TODO_TITLE));
+
+    // WHEN
     const addTodoButton = screen.getByRole('button', {
       name: /Add todo/i
     });
 
-    act(() => user.type(todoTitleInput, 'Test todo'));
     act(() => user.click(addTodoButton));
 
     // THEN
-    expect(mockAddTodo).toHaveBeenCalledWith('Test todo');
+    expect(mutationMock.mutate).toHaveBeenCalledWith(TODO_TITLE);
   });
 
   it('does not add todo when todo title is empty', () => {
     // GIVEN
     render(<AddTodo />);
 
+    // WHEN
     const addTodoButton = screen.getByRole('button', {
       name: /Add todo/i
     });
-
-    // WHEN
+    
     act(() => user.click(addTodoButton));
 
     // THEN
-    expect(mockAddTodo).not.toHaveBeenCalled();
+    expect(mutationMock.mutate).not.toHaveBeenCalled();
   });
 });

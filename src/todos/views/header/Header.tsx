@@ -32,7 +32,11 @@ export default function Header() {
 
   return (
     <header className={classNames.header}>
-      <StyledBadge badgeContent={data?.length} color="error">
+      <StyledBadge
+        data-testid="badge"
+        badgeContent={data?.length}
+        color="error"
+      >
         <Typography variant="h2">Todos</Typography>
       </StyledBadge>
       <TextField
