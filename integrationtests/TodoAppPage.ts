@@ -21,7 +21,6 @@ export default class TodoAppPage {
       .getByText('1');
 
     this.todoFilterInput = page.getByPlaceholder(/Search todos/i);
-
     this.todoTitleInput = page.getByLabel(/Add new todo.../i);
 
     this.addTodoButton = page.getByRole('button', {
