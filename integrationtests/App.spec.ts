@@ -1,11 +1,12 @@
 import { expect, test } from '@playwright/test';
+import TodoAppPage from './TodoAppPage';
 
 test.describe('App', () => {
   test('has correct title', async ({ page }) => {
     // WHEN
-    await page.goto('http://localhost:3000');
+    await new TodoAppPage(page).goto();
 
     // THEN
-    await expect(page).toHaveTitle(/React App/i);
+    await expect(page).toHaveTitle(/Todo App/i);
   });
 });
