@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 
-export default class Page {
+export default class AppPage {
   static readonly INITIAL_TODO_COUNT = 1;
   readonly heading: Locator;
   readonly undoneTodoCountBadgeWithValueOne: Locator;
@@ -11,23 +11,15 @@ export default class Page {
 
   constructor(private readonly page: Page) {
     this.page = page;
-
-    this.heading = page
-      .getByTestId('badge')
-      .getByRole('heading', { name: 'Todos' });
-
-    this.undoneTodoCountBadgeWithValueOne = page
-      .getByTestId('badge')
-      .getByText('1');
-
+    this.heading = page.getByTestId('badge').getByRole('heading', { name: 'Todos' });
+    this.undoneTodoCountBadgeWithValueOne = page.getByTestId('badge').getByText('1');
     this.todoFilterInput = page.getByPlaceholder(/Search todos/i);
     this.todoTitleInput = page.getByLabel(/Add new todo.../i);
+    this.todoItems = page.getByRole('listitem');
 
     this.addTodoButton = page.getByRole('button', {
       name: /Add todo/i
     });
-
-    this.todoItems = page.getByRole('listitem');
   }
 
   async goto() {
