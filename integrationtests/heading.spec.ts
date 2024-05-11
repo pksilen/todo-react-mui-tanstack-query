@@ -2,7 +2,7 @@
 import { expect, test } from '@playwright/test';
 import TodoAppPage from './TodoAppPage';
 
-test.describe('Header', async () => {
+test.describe('Heading', async () => {
   test('it has correct heading', async ({ page }) => {
     // GIVEN
     const todoAppPage = new TodoAppPage(page);
@@ -23,20 +23,5 @@ test.describe('Header', async () => {
 
     // THEN
     await expect(todoAppPage.undoneTodoCountBadgeWithValueOne).toBeVisible();
-  });
-
-  test('it filters todos', async ({ page }) => {
-    // GIVEN
-    const todoAppPage = await new TodoAppPage(page).goto();
-    const NON_EXISTENT_SEARCH_TERM = 'X';
-
-    // WHEN
-    await todoAppPage.filterTodos(
-      NON_EXISTENT_SEARCH_TERM,
-      TodoAppPage.INITIAL_TODO_COUNT
-    );
-
-    // THEN
-    await expect(todoAppPage.todoItems).toHaveCount(0);
   });
 });
