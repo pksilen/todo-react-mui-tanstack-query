@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/prefer-screen-queries,testing-library/no-await-sync-query */
 import { expect, test } from '@playwright/test';
-import TodoAppPage from './TodoAppPage';
+import TodoAppPage from '../TodoAppPage';
 
 const TODO_TITLE = 'Test todo title';
 const EMPTY_TODO_TITLE = '';
