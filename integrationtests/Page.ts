@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 
-export default class TodoAppPage {
+export default class Page {
   static readonly INITIAL_TODO_COUNT = 1;
   readonly heading: Locator;
   readonly undoneTodoCountBadgeWithValueOne: Locator;
