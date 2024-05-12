@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
-import Page from './Page';
+import TodoAppPage from './TodoAppPage';
 
 test.describe('Window title', () => {
   test('it has correct title', async ({ page }) => {
     // WHEN
-    await new Page(page).goto();
+    await new TodoAppPage(page).goto();
 
     // THEN
     await expect(page).toHaveTitle(/Todo App/i);
