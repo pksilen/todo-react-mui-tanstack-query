@@ -8,6 +8,17 @@ export default class TodoAppPage {
   readonly todoTitleInput: Locator;
   readonly addTodoButton: Locator;
   readonly todoItems: Locator;
+  readonly editTodoButton: Locator;
+  readonly editedTodoTitle: Locator;
+  readonly removeTodoButton: Locator;
+  readonly markDoneButton: Locator;
+  readonly markUndoneButton: Locator;
+  readonly showUndoneTodosOnlyToggle: Locator;
+  readonly listViewToggleButton: Locator;
+  readonly tableViewToggleButton: Locator;
+  readonly todoCheckbox: Locator;
+  readonly darkModeToggleButton: Locator;
+  readonly lightModeToggleButton: Locator;
 
   constructor(private readonly page: Page) {
     this.page = page;
@@ -16,6 +27,17 @@ export default class TodoAppPage {
     this.todoFilterInput = page.getByPlaceholder(/Search todos/i);
     this.todoTitleInput = page.getByLabel(/Add new todo.../i);
     this.todoItems = page.getByRole('listitem');
+    this.editTodoButton = page.getByRole('button', { name: /Edit/i });
+    this.editedTodoTitle = page.getByText('Dummy todo edited');
+    this.removeTodoButton = page.getByRole('button', { name: /Remove/i });
+    this.markDoneButton = page.getByRole('button', { name: /Mark done/i });
+    this.markUndoneButton = page.getByRole('button', { name: /Mark undone/i });
+    this.showUndoneTodosOnlyToggle = page.getByLabel(/Show undone only/i);
+    this.listViewToggleButton = page.locator('[aria-label="list"]');
+    this.tableViewToggleButton = page.locator('[aria-label="table"]');
+    this.todoCheckbox = page.locator('input[name="Dummy todo"]');
+    this.darkModeToggleButton = page.locator('[aria-label="dark"]');
+    this.lightModeToggleButton = page.locator('[aria-label="light"]');
 
     this.addTodoButton = page.getByRole('button', {
       name: /Add todo/i

@@ -9,21 +9,19 @@ type Props = {
 };
 
 export default function TodoTableRow({ todo: { id, title, isDone } }: Props) {
-  const { editTodoMutation, removeTodoMutation, toggleTodoDoneMutation } =
-    useTodoMutations(id);
+  const { editTodoMutation, removeTodoMutation, toggleTodoDoneMutation } = useTodoMutations(id);
 
   return (
     <TableRow>
       <TableCell>
         <Checkbox
+          name={title}
           checked={isDone}
           color="success"
           onChange={() => toggleTodoDoneMutation.mutate()}
         />
       </TableCell>
-      <TableCell
-        sx={{ flexGrow: 1, textDecoration: isDone ? 'line-through' : '' }}
-      >
+      <TableCell sx={{ flexGrow: 1, textDecoration: isDone ? 'line-through' : '' }}>
         {title}
       </TableCell>
       <TableCell align="right">

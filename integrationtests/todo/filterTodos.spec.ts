@@ -2,8 +2,8 @@
 import { expect, test } from '@playwright/test';
 import TodoAppPage from '../TodoAppPage';
 
-test.describe('Header', async () => {
-  test('it filters todos', async ({ page }) => {
+test.describe('Filter todos', async () => {
+  test('todos are filtered', async ({ page }) => {
     // GIVEN
     const todoAppPage = await new TodoAppPage(page).goto();
     const NON_EXISTENT_SEARCH_TERM = 'X';
