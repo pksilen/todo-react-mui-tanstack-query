@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {ThemeOptions} from '@mui/material';
-import {ViewControlsState} from './ViewControlsContext';
+import { ThemeOptions } from '@mui/material';
+import { ControlsState } from './ControlsContext';
 
 const initialThemeOptions: ThemeOptions = {
   palette: {
@@ -19,17 +19,14 @@ const initialThemeOptions: ThemeOptions = {
   }
 };
 
-export const viewControlsInitialState: ViewControlsState = {
+export const controlsInitialState: ControlsState = {
   shouldShowUndoneTodosOnly: false,
   themeOptions: initialThemeOptions,
   lowerCaseTodoFilterText: '',
   viewType: 'list'
 };
 
-const viewControlsStateReducer = (
-  previousState: ViewControlsState,
-  action: any
-): ViewControlsState => {
+export const controlsStateReducer = (previousState: ControlsState, action: any): ControlsState => {
   switch (action.type) {
     case 'TOGGLE_SHOULD_SHOW_UNDONE_TODOS_ONLY':
       return {
@@ -58,5 +55,3 @@ const viewControlsStateReducer = (
       return previousState;
   }
 };
-
-export default viewControlsStateReducer;

@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useReducer } from 'react';
-import ViewControlsContext from '../todos/contexts/ViewControlsContext';
+import ViewControlsContext from '../todos/contexts/ControlsContext';
 import viewControlsStateReducer, {
   viewControlsInitialState
 } from '../todos/contexts/viewControlsStateReducer';
