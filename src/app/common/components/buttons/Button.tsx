@@ -1,12 +1,12 @@
 import { Button as MuiButton } from '@mui/material';
 import React from 'react';
 
-type Props = {
-  readonly children: React.ReactNode;
-  readonly className?: string;
-  readonly onClick: () => void;
-  readonly variant?: 'text' | 'contained' | 'outlined';
-};
+type Props = Readonly<{
+  children: React.ReactNode;
+  className?: string;
+  onClick: () => void;
+  variant?: 'text' | 'contained' | 'outlined';
+}>;
 
 export const Button = ({ children, className, onClick, variant }: Props) => (
   <MuiButton

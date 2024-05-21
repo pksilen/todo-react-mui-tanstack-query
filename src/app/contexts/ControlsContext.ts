@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ThemeOptions } from '@mui/material';
 import { createContext, Dispatch } from 'react';
 
@@ -11,4 +10,5 @@ export type ControlsState = {
   viewType: ViewType;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ControlsContext = createContext<[ControlsState, Dispatch<any>]>(null as any);

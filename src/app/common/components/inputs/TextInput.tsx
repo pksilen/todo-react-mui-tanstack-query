@@ -1,14 +1,14 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 
-type Props = {
-  readonly autoFocus?: boolean;
-  readonly className?: string;
-  readonly inputProps?: object;
-  readonly label?: string;
-  readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  readonly value: string;
-};
+type Props = Readonly<{
+  autoFocus?: boolean;
+  className?: string;
+  inputProps?: object;
+  label?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}>;
 
 export const TextInput = ({ autoFocus, className, inputProps, label, onChange, value }: Props) => (
   <TextField

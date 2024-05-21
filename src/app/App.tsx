@@ -2,40 +2,36 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useReducer } from 'react';
-import ViewControlsContext from '../todos/contexts/ControlsContext';
-import viewControlsStateReducer, {
-  viewControlsInitialState
-} from '../todos/contexts/viewControlsStateReducer';
-import AddTodo from '../todos/views/addtodo/AddTodo';
-import ErrorCatcher from '../todos/views/errorcatcher/ErrorCatcher';
-import Header from '../todos/views/header/Header';
-import Todos from '../todos/views/todos/Todos';
-import ViewControls from '../todos/views/viewcontrols/ViewControls';
-import classNames from './App.module.scss';
+import classes from './App.module.scss';
+import { AddTodo } from './components/addtodo/AddTodo';
+import { Controls } from './components/controls/Controls';
+import { ErrorBoundary } from './components/errorboundary/ErrorBoundary';
+import { Header } from './components/header/Header';
+import { TodosTable } from './components/todos/TodosTable';
+import { ControlsContext } from './contexts/ControlsContext';
+import { controlsInitialState, controlsStateReducer } from './contexts/controlsStateReducer';
+import { TodosList } from './components/todos/TodosList';
 
 const queryClient = new QueryClient();
 
 export default function App() {
-  const [viewControlsState, dispatch] = useReducer(
-    viewControlsStateReducer,
-    viewControlsInitialState
-  );
+  const [controlsState, dispatch] = useReducer(controlsStateReducer, controlsInitialState);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ViewControlsContext.Provider value={[viewControlsState, dispatch]}>
-        <div className={classNames.container}>
-          <ThemeProvider theme={createTheme(viewControlsState.themeOptions)}>
+      <ControlsContext.Provider value={[controlsState, dispatch]}>
+        <main className={classes.container}>
+          <ThemeProvider theme={createTheme(controlsState.themeOptions)}>
             <CssBaseline />
             <Header />
-            <ViewControls />
-            <ErrorCatcher>
-              <Todos />
+            <Controls />
+            <ErrorBoundary>
+              {controlsState.viewType === 'list' ? <TodosList /> : <TodosTable />}
               <AddTodo />
-            </ErrorCatcher>
+            </ErrorBoundary>
           </ThemeProvider>
-        </div>
-      </ViewControlsContext.Provider>
+        </main>
+      </ControlsContext.Provider>
     </QueryClientProvider>
   );
 }

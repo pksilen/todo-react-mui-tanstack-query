@@ -2,10 +2,10 @@ import { KeyboardEvent, useState } from 'react';
 import { TextInput } from 'app/common/components/inputs/TextInput';
 import classes from './EditTextInput.module.scss';
 
-type Props = {
-  readonly onEditComplete: (newText: string) => void;
-  readonly text: string;
-};
+type Props = Readonly<{
+  onEditComplete: (newText: string) => void;
+  text: string;
+}>;
 
 export const EditTextInput = ({ onEditComplete, text, ...restOfProps }: Props) => {
   const [editedText, setEditedText] = useState(text);
