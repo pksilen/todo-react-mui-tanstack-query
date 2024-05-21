@@ -1,45 +1,21 @@
-import { Button, TextField } from '@mui/material';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
-import todoService from '../../services/FakeTodoService';
-import classNames from './AddTodo.module.scss';
+import { Button } from '@mui/material';
+import { TextInput } from '../../common/components/inputs/TextInput';
+import classes from './AddTodo.module.scss';
+import { useTodoAdding } from './useTodoAdding';
 
-export default function AddTodo() {
-  const [todoTitle, setTodoTitle] = useState('');
-  const queryClient = useQueryClient();
-
-  const addTodoMutation = useMutation({
-    mutationFn: (todoTitle: string) => todoService.addTodo(todoTitle),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos'] });
-    }
-  });
-
-  function maybeAddTodo() {
-    if (todoTitle) {
-      addTodoMutation.mutate(todoTitle);
-      setTodoTitle('');
-    }
-  }
+export const AddTodo = () => {
+  const { maybeAddTodo, setTodoTitle, todoTitle } = useTodoAdding();
 
   return (
-    <div className={classNames.container}>
-      <TextField
-        id="addtodo"
-        fullWidth
+    <section className={classes.addTodo}>
+      <TextInput
         label="Add new todo..."
         onChange={(event) => setTodoTitle(event.target.value)}
         value={todoTitle}
-        variant="standard"
       />
-      <Button
-        color="primary"
-        onClick={maybeAddTodo}
-        variant="contained"
-        sx={{ flexShrink: 0, marginLeft: '25px' }}
-      >
+      <Button className={classes.button} onClick={maybeAddTodo}>
         Add todo
       </Button>
-    </div>
+    </section>
   );
-}
+};
