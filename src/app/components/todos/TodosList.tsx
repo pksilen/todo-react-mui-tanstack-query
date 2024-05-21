@@ -1,7 +1,7 @@
 import { List } from 'app/common/components/list/List';
 import { Pending } from 'app/common/components/Pending';
 import { Heading4 } from 'app/common/components/typography/Heading4';
-import { Todo } from '../../model/Todo';
+import { Todo } from 'app/model/Todo';
 import { TodoListItem } from './todo/TodoListItem';
 import classes from './Todos.module.scss';
 import { useTodos } from './useTodos';

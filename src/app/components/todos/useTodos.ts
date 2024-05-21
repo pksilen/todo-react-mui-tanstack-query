@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
+import { isAny } from 'app/common/utils/isAny';
+import { ControlsContext } from 'app/contexts/ControlsContext';
+import { Todo } from 'app/model/Todo';
+import todoService from 'app/services/FakeTodoService';
 import { useContext } from 'react';
-import { isAny } from '../../common/utils/isAny';
-import { ControlsContext } from '../../contexts/ControlsContext';
-import { Todo } from '../../model/Todo';
-import todoService from '../../services/FakeTodoService';
 
 export const useTodos = () => {
   const [{ lowerCaseTodoFilterText, shouldShowUndoneTodosOnly }] = useContext(ControlsContext);

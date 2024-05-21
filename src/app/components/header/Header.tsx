@@ -1,6 +1,6 @@
-import { Badge } from '../../common/components/badges/Badge';
-import { SearchInput } from '../../common/components/inputs/SearchInput';
-import { Heading2 } from '../../common/components/typography/Heading2';
+import { Badge } from 'app/common/components/badges/Badge';
+import { SearchInput } from 'app/common/components/inputs/SearchInput';
+import { Heading2 } from 'app/common/components/typography/Heading2';
 import classes from './Header.module.scss';
 import { useHeader } from './useHeader';
 

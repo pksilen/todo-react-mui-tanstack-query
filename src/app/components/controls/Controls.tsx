@@ -1,17 +1,17 @@
 import { PaletteMode } from '@mui/material';
-import { useContext } from 'react';
 import {
   IconRadioButtonGroup,
   IconRadioButtonProps
-} from '../../common/components/buttons/IconRadioButtonGroup';
+} from 'app/common/components/buttons/IconRadioButtonGroup';
 import {
   DarkModeIcon,
   LightModeIcon,
   ListIcon,
   TableIcon
-} from '../../common/components/icons/Icons';
-import { Switch } from '../../common/components/switches/Switch';
-import { ControlsContext, ViewType } from '../../contexts/ControlsContext';
+} from 'app/common/components/icons/Icons';
+import { Switch } from 'app/common/components/switches/Switch';
+import { ControlsContext, ViewType } from 'app/contexts/ControlsContext';
+import { useContext } from 'react';
 import classes from './Controls.module.scss';
 
 export const Controls = () => {

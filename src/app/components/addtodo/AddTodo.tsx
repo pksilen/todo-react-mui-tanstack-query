@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { TextInput } from '../../common/components/inputs/TextInput';
+import { TextInput } from 'app/common/components/inputs/TextInput';
 import classes from './AddTodo.module.scss';
 import { useTodoAdding } from './useTodoAdding';
 

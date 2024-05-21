@@ -1,7 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Checkbox, IconButton, TableCell, TableRow } from '@mui/material';
-import { Todo } from '../../model/Todo';
+import { Todo } from 'app/model/Todo';
 import useTodoMutations from './useTodoMutations';
 
 type Props = {

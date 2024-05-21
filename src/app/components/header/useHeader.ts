@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
+import { ControlsContext } from 'app/contexts/ControlsContext';
+import todoService from 'app/services/FakeTodoService';
 import { useContext } from 'react';
-import { ControlsContext } from '../../contexts/ControlsContext';
-import todoService from '../../services/FakeTodoService';
 
 export const useHeader = () => {
   const [, dispatch] = useContext(ControlsContext);
