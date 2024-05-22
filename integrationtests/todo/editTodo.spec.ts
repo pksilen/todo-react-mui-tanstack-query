@@ -2,6 +2,7 @@
 import { expect, test } from '@playwright/test';
 import TodoAppPage from '../TodoAppPage';
 
+
 test.describe('Edit todo', async () => {
   test('todo title is edited', async ({ page }) => {
     // GIVEN
@@ -11,6 +12,6 @@ test.describe('Edit todo', async () => {
     await todoAppPage.editTodoButton.click();
 
     // THEN
-    await expect(todoAppPage.editedTodoTitle).toBeVisible();
+    await expect(todoAppPage.editTodoInput).toBeVisible();
   });
 });

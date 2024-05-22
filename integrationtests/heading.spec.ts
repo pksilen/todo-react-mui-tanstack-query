@@ -2,6 +2,7 @@
 import { expect, test } from '@playwright/test';
 import TodoAppPage from './TodoAppPage';
 
+
 test.describe('Heading', async () => {
   test('it has correct heading', async ({ page }) => {
     // GIVEN
@@ -22,6 +23,6 @@ test.describe('Heading', async () => {
     await todoAppPage.goto();
 
     // THEN
-    await expect(todoAppPage.undoneTodoCountBadgeWithValueOne).toBeVisible();
+    await expect(todoAppPage.undoneTodoCountBadge).toHaveText('1');
   });
 });

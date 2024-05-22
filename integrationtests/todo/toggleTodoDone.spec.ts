@@ -2,6 +2,7 @@
 import { expect, test } from '@playwright/test';
 import TodoAppPage from '../TodoAppPage';
 
+
 test.describe('Toggle todo done', async () => {
   test('Todo is marked done and "mark done" button is changed to "mark undone"', async ({
     page
@@ -10,11 +11,11 @@ test.describe('Toggle todo done', async () => {
     const todoAppPage = await new TodoAppPage(page).goto();
 
     // WHEN
-    await todoAppPage.markDoneButton.click();
+    await todoAppPage.markTodoDoneButton.click();
 
     // THEN
-    await expect(todoAppPage.markDoneButton).toBeHidden();
-    await expect(todoAppPage.markUndoneButton).toBeVisible();
+    await expect(todoAppPage.markTodoDoneButton).toBeHidden();
+    await expect(todoAppPage.markTodoUndoneButton).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
 });

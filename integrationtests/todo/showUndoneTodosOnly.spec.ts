@@ -2,6 +2,7 @@
 import { expect, test } from '@playwright/test';
 import TodoAppPage from '../TodoAppPage';
 
+
 test.describe('Show undone todos only', async () => {
   test('Shows a todo that is not done', async ({ page }) => {
     // GIVEN
@@ -20,7 +21,7 @@ test.describe('Show undone todos only', async () => {
 
     // WHEN
     await todoAppPage.showUndoneTodosOnlyToggle.click();
-    await todoAppPage.markDoneButton.click();
+    await todoAppPage.markTodoDoneButton.click();
 
     // THEN
     await expect(todoAppPage.todoItems).toHaveCount(0);
