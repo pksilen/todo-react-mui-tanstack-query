@@ -2,7 +2,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { act, render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import AddTodo from './AddTodo';
+import { AddTodo } from './AddTodo';
 
 jest.mock('@tanstack/react-query');
 
@@ -53,7 +53,7 @@ describe('AddTodo', () => {
     const addTodoButton = screen.getByRole('button', {
       name: /Add todo/i
     });
-    
+
     act(() => user.click(addTodoButton));
 
     // THEN

@@ -1,11 +1,11 @@
-import classNames from 'classnames';
 import { IconButton } from 'app/common/components/buttons/IconButton';
 import { EditIcon, RemoveIcon } from 'app/common/components/icons/Icons';
 import { Checkbox } from 'app/common/components/inputs/Checkbox';
 import { EditTextInput } from 'app/common/components/inputs/EditTextInput';
 import { TableCell } from 'app/common/components/table/TableCell';
 import { TableRow } from 'app/common/components/table/TableRow';
-import { Todo } from 'app/stores/todos/Todo';
+import classNames from 'classnames';
+import { Todo } from '../../../model/Todo';
 import classes from './TodoTableRow.module.scss';
 import { useTodo } from './useTodo';
 
@@ -14,7 +14,9 @@ type Props = {
 };
 
 export const TodoTableRow = ({ todo: { id, title, isDone } }: Props) => {
-  const { editableTodoId, editTodo, removeTodo, setEditableTodo, toggleTodoDone } = useTodo();
+  const { editMutation, isEditable, removeMutation, setIsEditable, toggleDoneMutation } =
+    useTodo(id);
+
   const titleClasses = classNames(classes.title, isDone && classes.isDone);
 
   return (
@@ -24,21 +26,21 @@ export const TodoTableRow = ({ todo: { id, title, isDone } }: Props) => {
           aria-label={title}
           isChecked={isDone}
           color="success"
-          onChange={() => toggleTodoDone(id)}
+          onChange={toggleDoneMutation.mutate}
         />
       </TableCell>
-      {editableTodoId === id ? (
+      {isEditable ? (
         <TableCell>
-          <EditTextInput onEditComplete={editTodo(id)} text={title} />
+          <EditTextInput onEditComplete={editMutation.mutate} text={title} />
         </TableCell>
       ) : (
-        <TableCell className={titleClasses} onDoubleClick={() => setEditableTodo(id)}>
+        <TableCell className={titleClasses} onDoubleClick={() => setIsEditable(true)}>
           {title}
         </TableCell>
       )}
       <TableCell className={classes.buttons}>
-        <IconButton icon={<EditIcon />} onClick={() => setEditableTodo(id)} />
-        <IconButton icon={<RemoveIcon />} onClick={() => removeTodo(id)} />
+        <IconButton icon={<EditIcon />} onClick={() => setIsEditable(true)} />
+        <IconButton icon={<RemoveIcon />} onClick={removeMutation.mutate} />
       </TableCell>
     </TableRow>
   );

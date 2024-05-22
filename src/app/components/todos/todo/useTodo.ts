@@ -1,16 +1,27 @@
-import { useTodosStore } from 'app/stores/todos/todosStore';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+import todoService from '../../../services/FakeTodoService';
 
-export const useTodo = () => {
-  const editableTodoId = useTodosStore((store) => store.editableTodoId);
-  const { editTodo, removeTodo, setEditableTodo, toggleTodoDone } = useTodosStore(
-    (store) => store.actions
-  );
+export const useTodo = (id: string) => {
+  const [isEditable, setIsEditable] = useState(false);
+  const queryClient = useQueryClient();
+  const invalidateTodosQuery = () => queryClient.invalidateQueries({ queryKey: ['todos'] });
 
-  return {
-    editableTodoId,
-    editTodo,
-    removeTodo,
-    setEditableTodo,
-    toggleTodoDone
-  };
+  const editMutation = useMutation({
+    mutationFn: (newTitle: string) => todoService.editTodo(id, newTitle),
+    onSettled: () => setIsEditable(false),
+    onSuccess: invalidateTodosQuery
+  });
+
+  const removeMutation = useMutation({
+    mutationFn: () => todoService.removeTodo(id),
+    onSuccess: invalidateTodosQuery
+  });
+
+  const toggleDoneMutation = useMutation({
+    mutationFn: () => todoService.toggleTodoDone(id),
+    onSuccess: invalidateTodosQuery
+  });
+
+  return { editMutation, isEditable, removeMutation, setIsEditable, toggleDoneMutation };
 };
