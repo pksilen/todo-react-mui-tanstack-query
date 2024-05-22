@@ -8,7 +8,7 @@ import { useTodos } from './useTodos';
 
 export const TodosList = () => {
   const { isPending, shownTodos } = useTodos();
-
+  
   return (
     <Pending
       className={classes.todos}

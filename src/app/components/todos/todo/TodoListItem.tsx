@@ -4,8 +4,8 @@ import { EditTextInput } from 'app/common/components/inputs/EditTextInput';
 import { ListItem } from 'app/common/components/list/ListItem';
 import { ListItemIcon } from 'app/common/components/list/ListItemIcon';
 import { ListItemText } from 'app/common/components/list/ListItemText';
+import { Todo } from 'app/model/Todo';
 import classNames from 'classnames';
-import { Todo } from '../../../model/Todo';
 import classes from './TodoListItem.module.scss';
 import { useTodo } from './useTodo';
 

@@ -20,7 +20,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ControlsContext.Provider value={[controlsState, dispatch]}>
-        <main className={classes.container}>
+        <main className={classes.main}>
           <ThemeProvider theme={createTheme(controlsState.themeOptions)}>
             <CssBaseline />
             <Header />

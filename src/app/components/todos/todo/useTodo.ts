@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import todoService from 'app/services/FakeTodoService';
 import { useState } from 'react';
-import todoService from '../../../services/FakeTodoService';
 
 export const useTodo = (id: string) => {
   const [isEditable, setIsEditable] = useState(false);

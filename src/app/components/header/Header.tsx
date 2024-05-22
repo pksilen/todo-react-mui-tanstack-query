@@ -15,7 +15,7 @@ export const Header = () => {
       <SearchInput
         className={classes.todoSearch}
         onChange={(event) =>
-          dispatch({ name: 'SET_TODO_FILTER_TEXT', payload: event.target.value })
+          dispatch({ type: 'SET_TODO_FILTER_TEXT', payload: event.target.value })
         }
         placeholder="Search todos..."
       />
