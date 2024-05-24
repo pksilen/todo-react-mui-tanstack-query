@@ -7,10 +7,10 @@ import { AddTodo } from './components/addtodo/AddTodo';
 import { Controls } from './components/controls/Controls';
 import { ErrorBoundary } from './components/errorboundary/ErrorBoundary';
 import { Header } from './components/header/Header';
-import { TodosTable } from './components/todos/TodosTable';
-import { ControlsContext } from './contexts/ControlsContext';
-import { controlsInitialState, controlsStateReducer } from './contexts/controlsStateReducer';
 import { TodosList } from './components/todos/TodosList';
+import { TodosTable } from './components/todos/TodosTable';
+import { ControlsContext } from './model/contexts/ControlsContext';
+import { controlsInitialState, controlsStateReducer } from './model/contexts/controlsStateReducer';
 
 const queryClient = new QueryClient();
 

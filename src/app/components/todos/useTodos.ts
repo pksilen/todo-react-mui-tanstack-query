@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { isAny } from 'app/common/utils/isAny';
-import { ControlsContext } from 'app/contexts/ControlsContext';
+import { ControlsContext } from 'app/model/contexts/ControlsContext';
 import { Todo } from 'app/model/Todo';
 import todoService from 'app/services/FakeTodoService';
 import { useContext } from 'react';

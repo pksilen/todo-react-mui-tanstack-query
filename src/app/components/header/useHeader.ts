@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { ControlsContext } from 'app/contexts/ControlsContext';
+import { ControlsContext } from 'app/model/contexts/ControlsContext';
 import todoService from 'app/services/FakeTodoService';
 import { useContext } from 'react';
 
