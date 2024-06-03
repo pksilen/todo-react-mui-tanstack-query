@@ -13,5 +13,8 @@ export const useHeader = () => {
 
   const undoneTodoCount = todos?.filter(({ isDone }) => !isDone).length;
 
-  return { dispatch, undoneTodoCount };
+  return {
+    setTodoFilter: (text: string) => dispatch({ type: 'SET_TODO_FILTER_TEXT', payload: text }),
+    undoneTodoCount
+  };
 };

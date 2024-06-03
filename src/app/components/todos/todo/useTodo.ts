@@ -7,7 +7,7 @@ export const useTodo = (id: string) => {
   const queryClient = useQueryClient();
   const invalidateTodosQuery = () => queryClient.invalidateQueries({ queryKey: ['todos'] });
 
-  const editMutation = useMutation({
+  const changeTitleMutation = useMutation({
     mutationFn: (newTitle: string) => todoService.editTodo(id, newTitle),
     onSettled: () => setIsEditable(false),
     onSuccess: invalidateTodosQuery
@@ -23,5 +23,5 @@ export const useTodo = (id: string) => {
     onSuccess: invalidateTodosQuery
   });
 
-  return { editMutation, isEditable, removeMutation, setIsEditable, toggleDoneMutation };
+  return { changeTitleMutation, isEditable, removeMutation, setIsEditable, toggleDoneMutation };
 };

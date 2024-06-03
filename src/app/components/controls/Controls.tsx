@@ -10,22 +10,22 @@ import {
   TableIcon
 } from 'app/common/components/icons/Icons';
 import { Switch } from 'app/common/components/inputs/Switch';
-import { ControlsContext, ViewType } from 'app/model/contexts/ControlsContext';
-import { useContext } from 'react';
+import { ViewType } from 'app/model/contexts/ControlsContext';
 import classes from './Controls.module.scss';
+import { useControls } from './useControls';
 
 export const Controls = () => {
-  const [, dispatch] = useContext(ControlsContext);
+  const { setViewMode, setViewType, toggleShouldShowUndoneTodosOnly } = useControls();
 
   const viewTypeButtons: IconRadioButtonProps<ViewType>[] = [
     {
       icon: <ListIcon />,
-      onClick: () => dispatch({ type: 'SET_VIEW_TYPE', payload: 'list' }),
+      onClick: () => setViewType('list'),
       value: 'list'
     },
     {
       icon: <TableIcon />,
-      onClick: () => dispatch({ type: 'SET_VIEW_TYPE', payload: 'table' }),
+      onClick: () => setViewType('table'),
       value: 'table'
     }
   ];
@@ -33,12 +33,12 @@ export const Controls = () => {
   const viewModeButtons: IconRadioButtonProps<PaletteMode>[] = [
     {
       icon: <LightModeIcon />,
-      onClick: () => dispatch({ type: 'SET_VIEW_MODE', payload: 'light' }),
+      onClick: () => setViewMode('light'),
       value: 'light'
     },
     {
       icon: <DarkModeIcon />,
-      onClick: () => dispatch({ type: 'SET_VIEW_MODE', payload: 'dark' }),
+      onClick: () => setViewMode('dark'),
       value: 'dark'
     }
   ];
@@ -46,10 +46,7 @@ export const Controls = () => {
   return (
     <section className={classes.controls}>
       <IconRadioButtonGroup buttons={viewTypeButtons} initialValue="list" />
-      <Switch
-        label="Show undone only"
-        onClick={() => dispatch({ type: 'TOGGLE_SHOULD_SHOW_UNDONE_TODOS_ONLY' })}
-      />
+      <Switch label="Show undone only" onClick={toggleShouldShowUndoneTodosOnly} />
       <IconRadioButtonGroup buttons={viewModeButtons} initialValue="dark" />
     </section>
   );

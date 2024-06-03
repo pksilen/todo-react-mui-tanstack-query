@@ -1,6 +1,7 @@
-import { ThemeOptions } from '@mui/material';
+import { PaletteMode, ThemeOptions } from '@mui/material';
 import { createContext, Dispatch } from 'react';
 
+export type ViewMode = PaletteMode;
 export type ViewType = 'list' | 'table';
 
 export type ControlsState = {

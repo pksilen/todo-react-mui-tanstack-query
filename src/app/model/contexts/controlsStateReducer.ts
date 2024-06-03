@@ -1,23 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ThemeOptions } from '@mui/material';
 import { ControlsState } from './ControlsContext';
-
-const initialThemeOptions: ThemeOptions = {
-  palette: {
-    mode: 'dark'
-  },
-  typography: {
-    body1: {
-      fontSize: '16px',
-      fontWeight: 300
-    },
-    fontFamily: ['Neue Haas Grotesk Text', 'sans-serif'].join(','),
-    h2: {
-      fontWeight: 500,
-      letterSpacing: '-0.25rem'
-    }
-  }
-};
+import { initialThemeOptions } from './initialThemeOptions';
 
 export const controlsInitialState: ControlsState = {
   shouldShowUndoneTodosOnly: false,

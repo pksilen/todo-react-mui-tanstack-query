@@ -5,7 +5,7 @@ import classes from './Header.module.scss';
 import { useHeader } from './useHeader';
 
 export const Header = () => {
-  const { dispatch, undoneTodoCount } = useHeader();
+  const { setTodoFilter, undoneTodoCount } = useHeader();
 
   return (
     <header className={classes.todosHeader}>
@@ -14,9 +14,7 @@ export const Header = () => {
       </Badge>
       <SearchInput
         className={classes.todoSearch}
-        onChange={(event) =>
-          dispatch({ type: 'SET_TODO_FILTER_TEXT', payload: event.target.value })
-        }
+        onChange={(event) => setTodoFilter(event.target.value)}
         placeholder="Search todos..."
       />
     </header>

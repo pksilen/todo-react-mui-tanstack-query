@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
-  const { editMutation, isEditable, removeMutation, setIsEditable, toggleDoneMutation } =
+  const { changeTitleMutation, isEditable, removeMutation, setIsEditable, toggleDoneMutation } =
     useTodo(id);
 
   const titleClasses = classNames(classes.title, isDone && classes.isDone);
@@ -23,7 +23,11 @@ export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
     <ListItem className={classes.todo}>
       <ListItemIcon icon={<TodoIcon color={isDone ? 'success' : 'error'} />} />
       {isEditable ? (
-        <EditTextInput aria-label="Edit todo" onEditComplete={editMutation.mutate} text={title} />
+        <EditTextInput
+          aria-label="Edit todo"
+          onEditComplete={changeTitleMutation.mutate}
+          text={title}
+        />
       ) : (
         <ListItemText
           className={titleClasses}
